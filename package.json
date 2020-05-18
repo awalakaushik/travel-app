@@ -1,0 +1,19 @@
+{
+  "name": "travel-app",
+  "version": "1.0.0",
+  "description": "A capstone project by Udacity to demonstrate the understanding of front-end skills.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awalakaushik/travel-app.git"
+  },
+  "author": "awalakaushik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awalakaushik/travel-app/issues"
+  },
+  "homepage": "https://github.com/awalakaushik/travel-app#readme"
+}
