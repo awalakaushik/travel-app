@@ -3,9 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Travel App</title>
 </head>
 <body>
+    <header>
+        <h1>Travel App</h1>
+    </header>
+
+    <main>
+        <aside class="trip-info">
+            <form onsubmit="handleSubmit(event)">
+                <input type="text" id="city" placeholder="Enter your trip city...">
+                <input type="date" id="departure-date" placeholder="Enter your trip start date ...">
+                <button type="submit" id="btnSubmit">Submit</button>
+            </form>
+
+            <div id="search-result">
+                <h2>Your Current Search Details</h2>
+
+                <div id="search-result">
+                    <h3 id="trip-city"></h3>
+                    <p id="weather"></p>
+                    <p id="trip-countdown"></p>
+                    <button type="submit" id="btnSave">Save</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="trip-details">
+            <h2>Your Trip Details</h2>
+
+            <span id="empty-message">Add a trip to show your details here</span>
+
+            <ul id="trips">
+                <!-- <li>
+                    <h3 id="trip-city"></h3>
+                    <p id="weather"></p>
+                    <p id="trip-countdown"></p>
+                </li> -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Copyright - Udacity Travel App</p>
+    </footer>
     
 </body>
 </html>

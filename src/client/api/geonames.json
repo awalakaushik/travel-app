@@ -1,0 +1,5 @@
+{
+    "baseUrl" : "http://api.geonames.org/searchJSON?formatted=true",
+    "username" : "<USERNAME_HERE>",
+    "style": "full"
+}

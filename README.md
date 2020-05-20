@@ -14,3 +14,23 @@ Finally, this is all going to be done in a Webpack environment, using an express
 2. Geonames
 3. Pixabay
 4. REST Countries
+
+## How to Use
+
+### Geonames API for Location
+- Use the following URL for fetching the latitude, longitude and country code information for a place entered by a user.
+- `http://api.geonames.org/searchJSON?formatted=true&q=CITY&username=USERNAME&style=full`
+
+### Weatherbit API for Weather Forecase
+- Use the following URL for fetching the weather information by latitude and longitude information
+- `https://api.weatherbit.io/v2.0/current?city=Raleigh,NC&key=API_KEY`
+- Weather Icons downloaded from the API are in the directory `src/client/assets/weather-icons/`
+
+### Pixabay API for Images
+- Use the following URL for searching images for a place that a user is visiting
+- `https://pixabay.com/api/?key=API_KEY&q=PLACE&image_type=photo`
+
+### Rest Countries for Country Information
+- Use the following URL for fetching information about a country
+- `https://restcountries.eu/rest/v2/name/{name}`
+  
