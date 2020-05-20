@@ -19,7 +19,25 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
+
+let trips = [];
+
 // Endpoints
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('/dist/index.html'));
+});
+
+app.post('/trip/save', (req, res) => {
+
+    const reqBody = req.body;
+
+    console.log(reqBody.trip);
+
+    if (!reqBody || !reqBody.trip) {
+        return status(400).send("Invalid Request");
+    }
+
+    trips.push(reqBody.trip);
+
+    res.status(200).send(trips);
 });
