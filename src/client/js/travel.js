@@ -14,8 +14,22 @@ function getTripCity() {
 }
 
 function getTripStartDate() {
-    return document.getElementById('departure-date').value;
+    
+    const dateString = document.getElementById('departure-date').value.split('-');
+
+    return dateString.join('/');
 }
+
+function getCountdown (tripStartDate) {
+
+    const currentDate = new Date();
+    const startDate = new Date(tripStartDate);
+    
+    const diffTime = Math.abs(startDate - currentDate);
+    const diffInDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+    return diffInDays;
+  }
 
 // API Calls
 async function fetchLocation(city) {
@@ -36,7 +50,7 @@ async function fetchLocation(city) {
         
         location.latitude = responseBody.geonames[0].lat;
         location.longitude = responseBody.geonames[0].lng;
-        location.country = responseBody.geonames[0].countryName;
+        location.countryName = responseBody.geonames[0].countryName;
         
         console.log(location);
         return location;
@@ -64,6 +78,7 @@ async function fetchWeatherForecast(latitude, longitude, forecast = FORECAST.CUR
         const forecast = {};
         
         const responseBody = await apiResponse.json();
+        
         forecast.temperature = responseBody.data[0].temp;
         forecast.weather = responseBody.data[0].weather;
         forecast.uvIndex = responseBody.data[0].uv;
@@ -152,5 +167,6 @@ export {
     fetchWeatherForecast,
     fetchPhoto,
     fetchCountryInfo,
+    getCountdown,
     FORECAST
 }
