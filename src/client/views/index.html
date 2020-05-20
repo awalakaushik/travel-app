@@ -15,7 +15,19 @@
             <form onsubmit="handleSubmit(event)">
                 <input type="text" id="city" placeholder="Enter your trip city...">
                 <input type="date" id="departure-date" placeholder="Enter your trip start date ...">
+                <button type="submit" id="btnSubmit">Submit</button>
             </form>
+
+            <div id="search-result">
+                <h2>Your Current Search Details</h2>
+
+                <div id="search-result">
+                    <h3 id="trip-city"></h3>
+                    <p id="weather"></p>
+                    <p id="trip-countdown"></p>
+                    <button type="submit" id="btnSave">Save</button>
+                </div>
+            </div>
         </aside>
 
         <section class="trip-details">
@@ -23,16 +35,18 @@
 
             <span id="empty-message">Add a trip to show your details here</span>
 
-            <div id="trips">
-                <h3 id="trip-city"></h3>
-                <p id="weather"></p>
-                <p id="trip-countdown"></p>
-            </div>
+            <ul id="trips">
+                <!-- <li>
+                    <h3 id="trip-city"></h3>
+                    <p id="weather"></p>
+                    <p id="trip-countdown"></p>
+                </li> -->
+            </ul>
         </section>
     </main>
 
     <footer>
-        &copy; Copyright - Udacity Travel App
+        <p>&copy; Copyright - Udacity Travel App</p>
     </footer>
     
 </body>
