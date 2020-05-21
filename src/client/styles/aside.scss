@@ -49,6 +49,10 @@ aside {
 
     section {
 
+        .display-result {
+            display: none;
+        }
+
         > div {
             border: 2px solid $primary-light;
             padding: 1rem;
@@ -56,17 +60,6 @@ aside {
 
             display: flex;
             flex-direction: column;
-
-            .card-content {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-
-                span, div {
-                    padding: 0.5rem;
-                }
-            }
 
             button {
                 // display: none;
