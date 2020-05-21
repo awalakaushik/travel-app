@@ -2,6 +2,22 @@
 
 aside {
 
+    button {
+        background-color: $primary-dark;
+        border: none;
+        outline: none;
+        border-radius: 2rem;
+        margin-top: 2rem;
+        font-size: large;
+        color: $primary-text;
+        width: 30rem;
+        height: 3rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
     form {
         width: 100%;
         padding: 2rem;
@@ -21,7 +37,6 @@ aside {
                 border: none;
                 outline: none;
                 padding: 1rem;
-                background-color: $secondary-light;
                 color: $secondary-text;
 
                 &:hover {
@@ -29,20 +44,33 @@ aside {
                 }
             }
         }
+        
+    }
 
-        button {
-            background-color: $primary-dark;
-            border: none;
-            outline: none;
-            border-radius: 2rem;
-            margin-top: 2rem;
-            font-size: large;
-            color: $primary-text;
-            width: 30rem;
-            height: 3rem;
+    section {
 
-            &:hover {
-                cursor: pointer;
+        > div {
+            border: 2px solid $primary-light;
+            padding: 1rem;
+            border-radius: 1rem;
+
+            display: flex;
+            flex-direction: column;
+
+            .card-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                span, div {
+                    padding: 0.5rem;
+                }
+            }
+
+            button {
+                // display: none;
+                width: 100%;
             }
         }
     }
