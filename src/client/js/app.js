@@ -16,16 +16,50 @@ const tripInfo = {};
 let savedTrips = [];
 
 // Helper functions
-function updateUI(savedTrips) {
-    
-    if (!savedTrips) {
-        alert("Could not find any saved trips. Try again later!");
-        return;
-    }
 
-    let tripsNode = document.getElementById("trips");
+const renderLastAddedElement = (trip, idx) => {
     
-    const tripCards = savedTrips.map((trip, idx) => {
+    // create list item
+    const listItem = document.createElement("li");
+    listItem.setAttribute("class", "card-content");
+
+    // create span
+    const spanNode = document.createElement("span");
+    const imgElement = document.createElement("img");
+    imgElement.setAttribute("id", idx);
+    imgElement.setAttribute("src", trip.photoUrl);
+    imgElement.setAttribute("alt", "trip city photo");
+    spanNode.appendChild(imgElement);
+
+    // create div
+    const divNode = document.createElement("div");
+
+    const tripHeading = document.createElement("h3");
+    tripHeading.setAttribute("id", "trip-city");
+    tripHeading.innerHTML = trip.city;
+
+    const tripWeather = document.createElement("p");
+    tripWeather.setAttribute("id", "weather");
+    tripWeather.innerHTML = `${trip.weatherForecast.temperature} &deg; C `;
+
+    const tripCountdown = document.createElement("p");
+    tripCountdown.setAttribute("id", "trip-countdown");
+    tripCountdown.innerHTML = `Your trip is ${trip.countdown} days away`;
+
+    divNode.appendChild(tripHeading);
+    divNode.appendChild(tripWeather);
+    divNode.appendChild(tripCountdown);
+
+    // add span and div to list item
+    listItem.appendChild(spanNode);
+    listItem.appendChild(divNode);
+
+    return listItem;
+
+}
+
+const renderAllElements = (trips) => {
+    return trips.map((trip, idx) => {
         
         // create list item
         const listItem = document.createElement("li");
@@ -48,11 +82,11 @@ function updateUI(savedTrips) {
 
         const tripWeather = document.createElement("p");
         tripWeather.setAttribute("id", "weather");
-        tripWeather.innerHTML = `${tripInfo.weatherForecast.temperature} &deg; C `;
+        tripWeather.innerHTML = `${trip.weatherForecast.temperature} &deg; C `;
         
         const tripCountdown = document.createElement("p");
         tripCountdown.setAttribute("id", "trip-countdown");
-        tripCountdown.innerHTML = `Your trip is ${tripInfo.countdown} days away`;
+        tripCountdown.innerHTML = `Your trip is ${trip.countdown} days away`;
 
         divNode.appendChild(tripHeading);
         divNode.appendChild(tripWeather);
@@ -64,11 +98,30 @@ function updateUI(savedTrips) {
 
         return listItem;
     });
+}
 
-    // add cards to the trip node section
-    tripCards.forEach(card => {
-        tripsNode.appendChild(card);
-    });
+function updateUI(savedTrips) {
+    
+    if (!savedTrips) {
+        alert("Could not find any saved trips. Try again later!");
+        return;
+    }
+    const length = savedTrips.length;
+
+    let tripsNode = document.getElementById("trips");
+    
+    if (tripsNode.childElementCount > 0) {
+        const listItem = renderLastAddedElement(savedTrips[length - 1], length - 1);
+        tripsNode.appendChild(listItem);
+    }
+    else {
+        const tripCards = renderAllElements(savedTrips);
+
+        // add cards to the trip node section
+        tripCards.forEach(card => {
+            tripsNode.appendChild(card);
+        });
+    }
 }
 
 function updateSearchView(tripInfo) {
@@ -76,10 +129,12 @@ function updateSearchView(tripInfo) {
     const tripCityElement = document.getElementById('trip-city');
     const weatherElement = document.getElementById('weather');
     const tripCountdownElement = document.getElementById('trip-countdown');
+    const tripImageElement = document.getElementById('trip-image');
 
     tripCityElement.innerHTML = tripInfo.city;
     weatherElement.innerHTML = `${tripInfo.weatherForecast.temperature} &deg; C `;
     tripCountdownElement.innerHTML = `Your trip is ${tripInfo.countdown} days away`;
+    tripImageElement.setAttribute('src', tripInfo.photoUrl);
 
     document.getElementById("search-result").classList.remove("display-result");
 }
@@ -159,7 +214,29 @@ const handleSave = async (e) => {
     } catch (error) {
       console.log(error);
     }
-  }
+}
+
+async function fetchTrips() {
+    try {
+        const response = await fetch('http://localhost:8081/trips', {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        });
+    
+        if (!response.ok) {
+            return null;
+        }
+        
+        savedTrips = await response.json();
+        console.log(savedTrips);
+        updateUI(savedTrips);
+        
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+window.addEventListener('load', fetchTrips);
 
 export {
     handleSubmit,
