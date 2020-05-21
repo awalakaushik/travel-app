@@ -1,0 +1,17 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './header.scss';
+@import './main.scss';
+@import './footer.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Anonymous Pro', 'Courier New', Courier, monospace;
+    display: grid;
+}
