@@ -10,6 +10,17 @@ main {
     background-color: $background-dark;
     color: $secondary-text;
 
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        span, div {
+            padding: 0.5rem;
+        }
+    }
+
     > aside {
         display: flex;
         flex-direction: column;
