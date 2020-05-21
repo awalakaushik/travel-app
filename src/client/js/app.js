@@ -28,7 +28,8 @@ function updateUI(savedTrips) {
     const tripCards = savedTrips.map((trip, idx) => {
         
         // create list item
-        const listItem = document.createElement("li").setAttribute("class", "card-content");
+        const listItem = document.createElement("li");
+        listItem.setAttribute("class", "card-content");
         
         // create span
         const spanNode = document.createElement("span");
@@ -40,14 +41,17 @@ function updateUI(savedTrips) {
 
         // create div
         const divNode = document.createElement("div");
-        
-        const tripHeading = document.createElement("h3").setAttribute("id", "trip-city")
+
+        const tripHeading = document.createElement("h3");
+        tripHeading.setAttribute("id", "trip-city");
         tripHeading.innerHTML = trip.city;
 
-        const tripWeather = document.createElement("p").setAttribute("id", "weather")
+        const tripWeather = document.createElement("p");
+        tripWeather.setAttribute("id", "weather");
         tripWeather.innerHTML = `${tripInfo.weatherForecast.temperature} &deg; C `;
         
-        const tripCountdown = document.createElement("p").setAttribute("id", "trip-countdown")
+        const tripCountdown = document.createElement("p");
+        tripCountdown.setAttribute("id", "trip-countdown");
         tripCountdown.innerHTML = `Your trip is ${tripInfo.countdown} days away`;
 
         divNode.appendChild(tripHeading);
@@ -57,6 +61,8 @@ function updateUI(savedTrips) {
         // add span and div to list item
         listItem.appendChild(spanNode);
         listItem.appendChild(divNode);
+
+        return listItem;
     });
 
     // add cards to the trip node section
