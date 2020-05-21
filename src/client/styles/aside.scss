@@ -21,7 +21,9 @@ aside {
     form {
         width: 100%;
         padding: 2rem;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         & div {
             display: flex;
             flex-direction: column;
@@ -54,9 +56,7 @@ aside {
         }
 
         > div {
-            border: 2px solid $primary-light;
             padding: 1rem;
-            border-radius: 1rem;
 
             display: flex;
             flex-direction: column;
