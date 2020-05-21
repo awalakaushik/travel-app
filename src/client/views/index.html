@@ -11,14 +11,22 @@
     </header>
 
     <main>
-        <aside class="trip-info">
-            <form onsubmit="handleSubmit(event)">
-                <input type="text" id="city" placeholder="Enter your trip city...">
-                <input type="date" id="departure-date" placeholder="Enter your trip start date ...">
-                <button type="submit" id="btnSubmit">Submit</button>
+        <aside>
+            <form onsubmit="handleSubmit(event)" class="form-container">
+                
+                <div class="form-group location-holder">
+                    <label for="city">Location</label>
+                    <input type="text" class="form-control" id="city" aria-describedby="location" placeholder="Enter desired location here">
+                </div>
+                <div class="form-group date-holder">
+                    <label for="departure-date">Date</label>
+                    <input type="date" class="form-control" id="departure-date" aria-describedby="date" placeholder="Enter your travel date here"></input>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="btn btn-lg btn-plan">Submit</button>
             </form>
 
-            <div id="search-result">
+            <section id="search-result">
                 <h2>Your Current Search Details</h2>
 
                 <div id="search-result">
@@ -27,10 +35,10 @@
                     <p id="trip-countdown"></p>
                     <button type="submit" id="btnSave">Save</button>
                 </div>
-            </div>
+            </section>
         </aside>
 
-        <section class="trip-details">
+        <section>
             <h2>Your Trip Details</h2>
 
             <span id="empty-message">Add a trip to show your details here</span>
