@@ -19,24 +19,81 @@ let savedTrips = [];
 function updateUI(savedTrips) {
     
     if (!savedTrips) {
+        alert("Could not find any saved trips. Try again later!");
         return;
     }
+
+    let tripsNode = document.getElementById("trips");
+    
+    const tripCards = savedTrips.map((trip, idx) => {
+        
+        // create list item
+        const listItem = document.createElement("li").setAttribute("class", "card-content");
+        
+        // create span
+        const spanNode = document.createElement("span");
+        const imgElement = document.createElement("img");
+        imgElement.setAttribute("id", idx);
+        imgElement.setAttribute("src", trip.photoUrl);
+        imgElement.setAttribute("alt", "trip city photo");
+        spanNode.appendChild(imgElement);
+
+        // create div
+        const divNode = document.createElement("div");
+        
+        const tripHeading = document.createElement("h3").setAttribute("id", "trip-city")
+        tripHeading.innerHTML = trip.city;
+
+        const tripWeather = document.createElement("p").setAttribute("id", "weather")
+        tripWeather.innerHTML = `${tripInfo.weatherForecast.temperature} &deg; C `;
+        
+        const tripCountdown = document.createElement("p").setAttribute("id", "trip-countdown")
+        tripCountdown.innerHTML = `Your trip is ${tripInfo.countdown} days away`;
+
+        divNode.appendChild(tripHeading);
+        divNode.appendChild(tripWeather);
+        divNode.appendChild(tripCountdown);
+
+        // add span and div to list item
+        listItem.appendChild(spanNode);
+        listItem.appendChild(divNode);
+    });
+
+    // add cards to the trip node section
+    tripCards.forEach(card => {
+        tripsNode.appendChild(card);
+    });
 }
 
 function updateSearchView(tripInfo) {
+    
     const tripCityElement = document.getElementById('trip-city');
     const weatherElement = document.getElementById('weather');
     const tripCountdownElement = document.getElementById('trip-countdown');
 
     tripCityElement.innerHTML = tripInfo.city;
-    weatherElement.innerHTML = tripInfo.weatherForecast.temperature;
-    tripCountdownElement.innerHTML = tripInfo.countdown;
+    weatherElement.innerHTML = `${tripInfo.weatherForecast.temperature} &deg; C `;
+    tripCountdownElement.innerHTML = `Your trip is ${tripInfo.countdown} days away`;
+
+    document.getElementById("search-result").classList.remove("display-result");
+}
+
+function removeSearchResult() {
+
+    // clear search results
+    document.getElementById("trip-image").setAttribute("src", "#");
+    document.getElementById("trip-city").innerHTML = "";
+    document.getElementById("weather").innerHTML = "";
+    document.getElementById("trip-countdown").innerHTML = "";
+
+    //  hide the card
+    document.getElementById("search-result").classList.add("display-result");
 }
 
 async function handleSubmit(e) {
 
     e.preventDefault();
-
+    
     // fetch trip details
     tripInfo.city = getTripCity();
     tripInfo.startDate = getTripStartDate();
@@ -87,8 +144,9 @@ const handleSave = async (e) => {
         
         savedTrips = await response.json();
         
-        // TODO: update UI
-        //updateUI(savedTrips);
+        removeSearchResult();
+        updateUI(savedTrips);
+        
         console.log(savedTrips);
         return savedTrips;
 
