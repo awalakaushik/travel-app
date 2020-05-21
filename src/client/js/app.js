@@ -42,7 +42,8 @@ async function handleSubmit(e) {
     tripInfo.startDate = getTripStartDate();
     
     if (!tripInfo.city || !tripInfo.startDate) {
-        throw new Error("City and Start Date are required!");
+        alert("City and Start Date are required!");
+        return;
     }
     
     // get countdown
@@ -52,7 +53,8 @@ async function handleSubmit(e) {
     tripInfo.location = await fetchLocation(tripInfo.city);
 
     if ( tripInfo.location === null) {
-        throw new Error("Error fetching location details... Try again later!");
+        alert("Error fetching location details... Try again later!");
+        return;
     }
 
     // fetch weather forecast for trip from Weatherbit
