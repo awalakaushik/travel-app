@@ -27,6 +27,11 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('/dist/index.html'));
 });
 
+app.get('/trips', (req, res) => {
+
+    res.status(200).send(trips);
+});
+
 app.post('/trip/save', (req, res) => {
 
     const reqBody = req.body;
