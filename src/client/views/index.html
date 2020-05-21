@@ -12,18 +12,18 @@
 
     <main>
         <aside>
-            <form onsubmit="handleSubmit(event)" class="form-container">
+            <form onsubmit="handleSubmit(event)">
                 
-                <div class="form-group location-holder">
+                <div>
                     <label for="city">Location</label>
-                    <input type="text" class="form-control" id="city" aria-describedby="location" placeholder="Enter desired location here">
+                    <input type="text" id="city" aria-describedby="location" placeholder="Enter desired location here">
                 </div>
-                <div class="form-group date-holder">
+                <div>
                     <label for="departure-date">Date</label>
-                    <input type="date" class="form-control" id="departure-date" aria-describedby="date" placeholder="Enter your travel date here"></input>
+                    <input type="date" id="departure-date" aria-describedby="date" placeholder="Enter your travel date here" />
                 </div>
 
-                <button type="submit" id="btnSubmit" class="btn btn-lg btn-plan">Submit</button>
+                <button type="submit" id="btnSubmit" class="btn-plan">Submit</button>
             </form>
 
             <section id="search-result">
