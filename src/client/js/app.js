@@ -195,7 +195,10 @@ const handleSave = async (e) => {
     try {
         const response = await fetch('http://localhost:8081/trip/save', {
             method: 'POST',
-            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json;charset=UTF-8"
+            },
             body: JSON.stringify({ trip: tripInfo })
         });
     
