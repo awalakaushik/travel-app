@@ -239,13 +239,8 @@ async function fetchTrips() {
     }
 }
 
-window.addEventListener('load', fetchTrips);
-
-const form = document.getElementById('travel-form');
-
-form.addEventListener('submit', handleSubmit);
-
 export {
     handleSubmit,
-    handleSave
+    handleSave,
+    fetchTrips
 }
