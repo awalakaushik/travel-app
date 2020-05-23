@@ -189,7 +189,7 @@ async function handleSubmit(e) {
 }
 
 // Save trip information
-const handleSave = async (e) => {
+async function handleSave(e) {
     e.preventDefault();
   
     try {
