@@ -33,4 +33,16 @@ Finally, this is all going to be done in a Webpack environment, using an express
 ### Rest Countries for Country Information
 - Use the following URL for fetching information about a country
 - `https://restcountries.eu/rest/v2/name/{name}`
-  
+
+### Adding API Keys
+- The application does not hold the api keys already to fetch the results.
+- The `Client` folder inside `src` has a directory `api`. This `api` folder contains different `.json` files for different APIs accordingly.
+- Add your API credentials to the respective files in order to make the application work.
+
+### How to Run
+- Run `npm install`
+- Next, start the node server, `npm run start`
+- Next, run the application in development mode `npm run dev`
+
+### Building for production
+- Run `npm run build`
