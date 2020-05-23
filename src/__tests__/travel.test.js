@@ -25,10 +25,6 @@ describe('Given a trip start date, getCountdown() returns a number to indicate t
     test('Returns a number', async () => {
         const response = getCountdown(startDate);
         expect(response).toBeDefined();
-        expect(response).toBe(8);
+        expect(typeof response).toBe("number");
     });
 });
-
-
-
-
