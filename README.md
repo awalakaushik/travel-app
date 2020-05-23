@@ -37,7 +37,11 @@ Finally, this is all going to be done in a Webpack environment, using an express
 ### Adding API Keys
 - The application does not hold the api keys already to fetch the results.
 - The `Client` folder inside `src` has a directory `api`. This `api` folder contains different `.json` files for different APIs accordingly.
-- Add your API credentials to the respective files in order to make the application work.
+- Add your API credentials to the respective files as shown below in order to make the application work.
+  - `geonames.json`
+  - `pixabay.json`
+  - `restcountries.json`
+  - `weatherbit.json`
 
 ### How to Run
 - Run `npm install`
