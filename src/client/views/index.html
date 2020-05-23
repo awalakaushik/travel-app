@@ -50,13 +50,7 @@
 
             <span id="empty-message">Add a trip to show your details here</span>
 
-            <ul id="trips">
-                <!-- <li>
-                    <h3 id="trip-city"></h3>
-                    <p id="weather"></p>
-                    <p id="trip-countdown"></p>
-                </li> -->
-            </ul>
+            <ul id="trips"></ul>
         </section>
     </main>
 
@@ -64,5 +58,15 @@
         <p>&copy; Copyright - Udacity Travel App</p>
     </footer>
     
+    <!-- Add Service Worker -->
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 </html>
