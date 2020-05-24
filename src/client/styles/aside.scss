@@ -10,7 +10,7 @@ aside {
         margin-top: 2rem;
         font-size: large;
         color: $primary-text;
-        width: 30rem;
+        width: 80%;
         height: 3rem;
 
         &:hover {
@@ -20,10 +20,9 @@ aside {
     
     form {
         width: 100%;
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
         & div {
             display: flex;
             flex-direction: column;
@@ -33,7 +32,7 @@ aside {
             }
 
             input {
-                width: 30rem;
+                width: 80%;
                 height: 3rem;
                 border-radius: 2rem;
                 border: none;
@@ -44,6 +43,10 @@ aside {
                 &:hover {
                     font-size: large;
                 }
+
+                &::placeholder {
+                    font-size: 0.75rem;
+                }
             }
         }
         
@@ -51,13 +54,16 @@ aside {
 
     section {
 
+        h2 {
+            padding: 1rem;
+        }
+
         .display-result {
             display: none;
         }
 
         > div {
             padding: 1rem;
-
             display: flex;
             flex-direction: column;
 
