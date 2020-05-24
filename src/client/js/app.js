@@ -73,7 +73,11 @@ function updateUI(savedTrips) {
     return;
   }
   const length = savedTrips.length;
+  if (length == 0) {
+    emptyMessage.style.visibility = 'block';
+  }
 
+  const emptyMessage = document.getElementById("empty-message");
   let tripsNode = document.getElementById("trips");
 
   if (tripsNode.childElementCount > 0) {
@@ -87,6 +91,9 @@ function updateUI(savedTrips) {
       tripsNode.appendChild(card);
     });
   }
+
+  // hide the empty message
+  emptyMessage.style.visibility = 'hidden';
 }
 
 function updateSearchView(tripInfo) {
