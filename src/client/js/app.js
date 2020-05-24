@@ -39,7 +39,7 @@ const createListItem = (trip, idx) => {
 
   const tripWeather = document.createElement("p");
   tripWeather.setAttribute("id", "weather");
-  tripWeather.innerHTML = `${trip.weatherForecast.temperature} &deg;C - ${trip.weatherForecast.weather.description} <img src="../assets/weather-icons/${trip.weatherForecast.weather.icon}" alt="weather-icon" />`;
+  tripWeather.innerHTML = `${trip.weatherForecast.temperature} &deg;C - ${trip.weatherForecast.weather.description}`;
 
   const tripCountdown = document.createElement("p");
   tripCountdown.setAttribute("id", "trip-countdown");
